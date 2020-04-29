@@ -1,0 +1,1335 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="链表的应用, Darcy">
+    <meta name="description" content="To be or not to be, it is not a question.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>链表的应用 | Darcy</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Darcy</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友链</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Darcy</div>
+        <div class="logo-desc">
+            
+            To be or not to be, it is not a question.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友链
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title"><span>链表的应用</span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    .toc-fixed .toc-link::before{
+        position: fixed!important;/*当toc的位置改为fixed时，.toc-link::before也要改为fixed*/
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+
+<script>
+<!-- 文章内容详情页面对顶部导航栏的隐藏于显示 -->
+   THEIGHT = 0;
+   $(document).scroll(function() {
+           var docscroH = $(document).scrollTop();  //滚动高度
+           var winH = $(window).height();  //可见高度 
+           var docH = $(document).height();  //内容高度
+           
+           if(docscroH - THEIGHT > 0 ) {  
+               if(docscroH >= 99 && (docH - (docscroH + winH) >= 50 )){  //距离顶部大于100px且距离底部大于50时
+                        if(THEIGHT<100){
+                            $('#headNav').slideUp(0);
+                        }
+                        else {
+                            $('#headNav').slideUp(300);
+                        }
+                    }
+               if (docH - (docscroH + winH) < 50 ){  //滚动条滑到底部
+                    $('#headNav').slideDown(200);
+               }
+           }
+           else{
+               $('#headNav').slideDown(200);
+           };        
+           THEIGHT = docscroH;
+       });
+
+</script>
+
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                                <span class="chip bg-color">链表</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AE%9E%E9%AA%8C/" class="post-category">
+                                实验
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-05-20
+                </div>
+                
+
+                <div class="post-author info-break-policy">
+                    <i class="far fa-user fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                    张超
+                    
+                </div>
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    11 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="题目：求相邻k个节点数值之和最大的第一节点"><a href="#题目：求相邻k个节点数值之和最大的第一节点" class="headerlink" title="题目：求相邻k个节点数值之和最大的第一节点"></a>题目：求相邻k个节点数值之和最大的第一节点</h1><p>输入数据（设为整型）建立单链表，并求相邻k个节点data值之和为最大的第一节点。例如输入k = 2，数据为<code>2 6 4 7 3 #</code>（#为结束符），建立下面链表，运行结果输出（序号3，data值4）：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNTIwMDEwNTM1MTE2?x-oss-process=image/format,png" alt="题目描述"></p>
+<h2 id="一、-问题分析与算法思路"><a href="#一、-问题分析与算法思路" class="headerlink" title="一、 问题分析与算法思路"></a>一、 问题分析与算法思路</h2><p>&nbsp;&nbsp;&nbsp;&nbsp; 首先将问题分解为3个步骤：数据输入—&gt;数据处理—&gt;结果输出<br>&nbsp;&nbsp;&nbsp;&nbsp; 题目给定使用链表来保存整型数据，并且只需要求某个节点及其后面k-1个节点的和，所以采用单向非循环链表实现。<br>&nbsp;&nbsp;&nbsp;&nbsp; 然后分为3个模块来实现：</p>
+<ol>
+<li><p>主函数<code>main()</code>：<br>  a. 实现数据的输入。数据可以从键盘输入也可以从.txt文件输入。从键盘输入时要检查结束符“#”，当遇到结束符时结束此次输入，然后进行数据处理。如果从文件输入则首先判断该文件是否是.txt格式，如果不是则输出错误提示，选择重新输入或者退出程序。如果是.txt文件则进行文件读取，文件中的整型数据以空格符隔开，遇到结束符“#”时结束读取，若在遇到结束符之前遇到了非整型数据则输出错误提示，然后选择重新输入或者退出程序。<br>  b. 调用数据处理模块进行数据处理。输入数据建立链表后让用户输入k的值然后进行求解。<br>  c. 实现数据输出。输出当前操作的结果之后继续输出提示，让用户选择是继续对当前链表数据求相邻k个节点data值之和为最大的第一节点还是重新输入数据求相邻k个节点data值之和为最大的第一节点，亦或者是结束当前程序。<br>  d. 结束程序。当输出数据之后，在用户选择结束程序后，退出当前程序。</p>
+</li>
+<li><p>建表函数：<code>Creatlist()</code>：</p>
+<pre><code>建立一个表头为空的单向非循环链表，然后将输入数据依次存入链表。</code></pre></li>
+<li><p>求值函数：<code>Adjmax(L, k)</code>：</p>
+<pre><code>求值函数将从链表的第一个元素开始，一直遍历到第（LisLength（L）- k + 1）个元素，每次遍历都求出从该元素起到其后第k-1个元素止的k个元素的和，然后比较每个和的大小，返回和最大时的第一节点。求值函数在进行遍历求和比较时，不是每次都把第一个数与其后共k个数依次相加，而是采用“滑动窗口”式求和。如下图所示：</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;当k=3时，从第一个节点data=2开始，计算连续3个节点和，为2+6+4=12。然后“窗口”向右移动一个节点，这时计算“窗口”内数据和时不再是遍历相加得到6+4+7=17了，而是利用上一次的和12减去上一个“窗口”的第一个数2，然后再加上当前“窗口”的最后一个数7，即12-2+7=17。这样每次计算和时，只需要做3个数的加减运算，而不再需要将“窗口”内的k个数依次遍历一遍求和了。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNTIwMDEwMzE0MjI0?x-oss-process=image/format,png" alt="滑动窗口"></p>
+</li>
+</ol>
+<h2 id="二、程序实现"><a href="#二、程序实现" class="headerlink" title="二、程序实现"></a>二、程序实现</h2><p>&nbsp;&nbsp;&nbsp;&nbsp; 该程序给出了完整的提示：包括选择数据输入方式（键盘输入或者txt文件输入）提示，还有对错误输入时的提醒，比如文件选择方式错误，选择的文件类型错误等。在程序运行结束后还提供了是否继续进行操作的选择。<br>（该程序在Visual Studio 2015环境下测试通过）</p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/*
+求相邻k个节点数值之和最大的第一节点
+输入数据（设为整型）建立单链表，并求相邻k个节点data值之和为最大的第一节点。
+例如输入k = 2，数据为2 6 4 7 3 #（#为结束符），建立下面链表，运行结果输出（序号3，data值4）
+*/</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">define</span> FILEDIR_SIZE 200  </span><span class="token comment" spellcheck="true">//定义要输入的文件的目录的长度</span>
+
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> node
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">struct</span> node <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>linknode<span class="token punctuation">,</span><span class="token operator">*</span>link<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">Creatlink</span><span class="token punctuation">(</span>link L<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//  链表创建函数</span>
+<span class="token keyword">void</span> <span class="token function">addTolink</span><span class="token punctuation">(</span>link L<span class="token punctuation">,</span> <span class="token keyword">int</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//  链表添加函数</span>
+<span class="token keyword">void</span> <span class="token function">Adjmax</span><span class="token punctuation">(</span>link L<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//查找函数</span>
+<span class="token keyword">char</span> <span class="token operator">*</span> <span class="token function">right</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>dst<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>src<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//字符串截取函数，用于判断输入的文件是否是txt类型</span>
+<span class="token keyword">void</span> <span class="token function">release</span><span class="token punctuation">(</span>link L<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> length <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//链表的长度，用于判断k是否合法</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    link List <span class="token punctuation">;</span>
+    <span class="token keyword">int</span>  sel<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//选择是否继续</span>
+    List <span class="token operator">=</span> <span class="token punctuation">(</span>link<span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>linknode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    List<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>sel<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> repeat <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token function">release</span><span class="token punctuation">(</span>List<span class="token punctuation">)</span><span class="token punctuation">;</span>              <span class="token comment" spellcheck="true">//链表创建之前先释放</span>
+        <span class="token function">Creatlink</span><span class="token punctuation">(</span>List<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>repeat <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf_s</span><span class="token punctuation">(</span><span class="token string">"Please input k:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">Adjmax</span><span class="token punctuation">(</span>List<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">printf_s</span><span class="token punctuation">(</span><span class="token string">"Continue to input k(input 1) or Exit(input 0):\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>repeat<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">printf_s</span><span class="token punctuation">(</span><span class="token string">"Continue to input the link data(input 1) or Exit(input 0):\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>sel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span>  <span class="token function">Creatlink</span><span class="token punctuation">(</span>link L<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//创建链表函数，数据可选择从键盘输入或者从文件读入，可复用</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">char</span> in<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//定义一个字符数组来保存输入的值</span>
+    <span class="token keyword">char</span> fsuffix<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//存放文件后缀，判断是否是txt类型</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"-----Input from the keyboard(input \"K\") or the file(input \"F\")-----\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//提示用户：输入K代表从键盘输入数据，输入F则是从文件读取数据</span>
+    <span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> in<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>in<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'K'</span> <span class="token operator">&amp;&amp;</span> in<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'F'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//如果用户输入的既不是K也不是F则提示用户重新输入</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Illegal input !!! please choose again......\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> in<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>in<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'F'</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//如果选择的是文件输入</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Please input the absolute path of a txt file:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        FILE <span class="token operator">*</span>fp <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//保存用户指定输入的文件</span>
+        <span class="token keyword">char</span> fileDir<span class="token punctuation">[</span>FILEDIR_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> fileDir<span class="token punctuation">,</span> FILEDIR_SIZE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        errno_t err<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>err <span class="token operator">=</span> <span class="token function">fopen_s</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>fp<span class="token punctuation">,</span> fileDir<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token function">strcmp</span><span class="token punctuation">(</span><span class="token function">right</span><span class="token punctuation">(</span>fsuffix<span class="token punctuation">,</span> fileDir<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"txt"</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//如果打开不成功,或者打开的不是txt格式文件</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The file can't be found or the file type can't be allowed, please input again:\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> fileDir<span class="token punctuation">,</span> FILEDIR_SIZE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token constant">EOF</span> <span class="token operator">!=</span> <span class="token function">fscanf_s</span><span class="token punctuation">(</span>fp<span class="token punctuation">,</span> <span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">addTolink</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>in<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'K'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"please start to input the link data, end with '#':\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> x<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">char</span> c<span class="token operator">=</span><span class="token string">'!'</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>c <span class="token operator">!=</span> <span class="token string">'#'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token function">scanf_s</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token function">addTolink</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">addTolink</span><span class="token punctuation">(</span>link L<span class="token punctuation">,</span> <span class="token keyword">int</span> key<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    link  p<span class="token operator">=</span>L<span class="token punctuation">,</span> r<span class="token punctuation">;</span>
+        r <span class="token operator">=</span> <span class="token punctuation">(</span>link<span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>linknode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        r<span class="token operator">-></span>data <span class="token operator">=</span> key<span class="token punctuation">;</span>
+        r<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>p<span class="token operator">-></span>next<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        p<span class="token operator">-></span>next <span class="token operator">=</span> r<span class="token punctuation">;</span>
+        length<span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">Adjmax</span><span class="token punctuation">(</span>link L<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>k <span class="token operator">&lt;</span> length<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> k<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf_s</span><span class="token punctuation">(</span><span class="token string">"The k is illegal, please try again\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    link result<span class="token operator">=</span><span class="token constant">NULL</span><span class="token punctuation">,</span>r<span class="token punctuation">,</span>p <span class="token operator">=</span> L<span class="token punctuation">,</span> q <span class="token operator">=</span> L<span class="token operator">-></span>next<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//result用于存放和最大的第一节点，r用于遍历求和</span>
+    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//初始值为-1，防止result为空指针引发异常</span>
+    <span class="token keyword">int</span> sumt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//存放临时的和</span>
+    <span class="token keyword">int</span> order <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> ordert<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//记录临时序号</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//使p指向以q开头的连续k个节点序列的最后一个节点。q、p分别为“窗口”开始和结束</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>p<span class="token operator">-></span>next<span class="token punctuation">)</span>
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        ordert<span class="token operator">++</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>ordert <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            sumt <span class="token operator">=</span> sumt <span class="token operator">+</span> p<span class="token operator">-></span>data <span class="token operator">-</span> q<span class="token operator">-></span>data<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//滑动窗口法计算和</span>
+            q <span class="token operator">=</span> q<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">else</span>
+        <span class="token punctuation">{</span>
+            r <span class="token operator">=</span> q<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">//计算连续k个数的和</span>
+            <span class="token punctuation">{</span>
+                sumt <span class="token operator">+</span><span class="token operator">=</span> r<span class="token operator">-></span>data<span class="token punctuation">;</span>
+                r <span class="token operator">=</span> r<span class="token operator">-></span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>sumt <span class="token operator">></span> sum<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            sum <span class="token operator">=</span> sumt<span class="token punctuation">;</span>
+            result <span class="token operator">=</span> q<span class="token punctuation">;</span>
+            order <span class="token operator">=</span> ordert<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//先只移动尾指针p</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf_s</span><span class="token punctuation">(</span><span class="token string">"序号%d，data值%d\n"</span><span class="token punctuation">,</span>order<span class="token punctuation">,</span>result<span class="token operator">-></span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">release</span><span class="token punctuation">(</span>link L<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//链表释放函数</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>L<span class="token operator">-></span>next<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        link q <span class="token operator">=</span> L<span class="token operator">-></span>next<span class="token punctuation">,</span> p <span class="token operator">=</span> L<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>q<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            p <span class="token operator">=</span> q<span class="token punctuation">;</span>
+            q <span class="token operator">=</span> q<span class="token operator">-></span>next<span class="token punctuation">;</span>
+            <span class="token function">free</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    L<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">char</span> <span class="token operator">*</span> <span class="token function">right</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>dst<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>src<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//截取src的最后3位赋值给dst，用于判断文件名</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>p <span class="token operator">=</span> src<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>q <span class="token operator">=</span> dst<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>src<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n<span class="token operator">></span>len<span class="token punctuation">)</span> n <span class="token operator">=</span> len<span class="token punctuation">;</span>
+    p <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>len <span class="token operator">-</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//从右边第n个字符开始，到0结束</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span>p<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> dst<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/*
+void Adjmax(link L, int k)      //该函数运行时需注释掉，这个为普通算法，上面的为滑动窗口法
+{
+    if (!(k &lt; length + 1 &amp;&amp; k>0))
+    {
+        printf_s("The k is illegal, please try again\n");
+        return;
+    }
+    link result = NULL, r, p = L, q = L->next;   //result用于存放和最大的第一节点，r用于遍历求和
+    int sum = 0;
+    int sumt = 0;       //存放临时的和
+    int order = 0;
+    int ordert = 0;   //记录临时序号
+    for (int i = 0; i &lt; k; i++)   //使p指向以q开头的连续k个节点序列的最后一个节点。q、p分别为“窗口”开始和结束
+    {
+        if (p->next)
+            p = p->next;
+    }
+    while (p)
+    {
+        ordert++;
+        {
+            r = q;
+            sumt = 0;
+            for (int j = 0; j &lt; k; j++)     //计算连续k个数的和
+            {
+                sumt += r->data;
+                r = r->next;
+            }
+        }
+        if (sumt > sum)
+        {
+            sum = sumt;
+            result = q;
+            order = ordert;
+        }
+
+        p = p->next;  //向后移动尾指针p和q
+        q = q->next;
+    }
+    printf_s("序号%d，data值%d\n", order, result->data);
+}
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="三、结果分析"><a href="#三、结果分析" class="headerlink" title="三、结果分析"></a>三、结果分析</h2><ol>
+<li>测试思路：先选用键盘输入方式，然后开始输入一串数据，#结束，然后输入k的值，正确输出结果。然后选择仍用改组数据，但是用新的k进行计算。<br>&nbsp;&nbsp;&nbsp;&nbsp;当新的k小于（在此为0）或大于边界（该测试是6，数据长度为5）时，提示错误，然后选择重新输入，输入正确时正确输出。<br>&nbsp;&nbsp;&nbsp;&nbsp;然后不退出程序，选择重新从键盘输入测试数据。这时链表会进行清空重置。接下来的测试数据只有一个数，k只能为1，结果正确。<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNTIwMDEwOTA5MTk3?x-oss-process=image/format,png" alt="正确测试结果"></li>
+</ol>
+<p>若测试输入的数据为0个，则k无有效值。<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNTIwMDEwOTM4MTE5?x-oss-process=image/format,png" alt="异常测试结果"></p>
+<ol start="2">
+<li>算法和结果的有效性分析<br>&nbsp;&nbsp; 由普通算法实现所用平均时间约为5秒（数据规模为50000+，测试文件为138kB的<code>txt</code>文件。）<br>&nbsp;&nbsp; 普通算法的计算函数代码如下：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">Adjmax</span><span class="token punctuation">(</span>link L<span class="token punctuation">,</span> <span class="token keyword">int</span> k<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>k <span class="token operator">&lt;</span> length <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> k<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf_s</span><span class="token punctuation">(</span><span class="token string">"The k is illegal, please try again\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    link result <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> p <span class="token operator">=</span> L<span class="token punctuation">,</span> q <span class="token operator">=</span> L<span class="token operator">-></span>next<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//result用于存放和最大的第一节点，r用于遍历求和</span>
+    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> sumt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//存放临时的和</span>
+    <span class="token keyword">int</span> order <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> ordert <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//记录临时序号</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">//使p指向以q开头的连续k个节点序列的最后一个节点。q、p分别为“窗口”开始和结束</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token operator">-></span>next<span class="token punctuation">)</span>
+            p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        ordert<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">{</span>
+            r <span class="token operator">=</span> q<span class="token punctuation">;</span>
+            sumt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true">//计算连续k个数的和</span>
+            <span class="token punctuation">{</span>
+                sumt <span class="token operator">+</span><span class="token operator">=</span> r<span class="token operator">-></span>data<span class="token punctuation">;</span>
+                r <span class="token operator">=</span> r<span class="token operator">-></span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>sumt <span class="token operator">></span> sum<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            sum <span class="token operator">=</span> sumt<span class="token punctuation">;</span>
+            result <span class="token operator">=</span> q<span class="token punctuation">;</span>
+            order <span class="token operator">=</span> ordert<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//向后移动尾指针p和q</span>
+        q <span class="token operator">=</span> q<span class="token operator">-></span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf_s</span><span class="token punctuation">(</span><span class="token string">"序号%d，data值%d\n"</span><span class="token punctuation">,</span> order<span class="token punctuation">,</span> result<span class="token operator">-></span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该算法的时间复杂度为O（n2）<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNTIwMDExMTI2ODk4?x-oss-process=image/format,png" alt="测试结果"></p>
+<p>若使用“滑动窗口”算法实现，平均使用时间约为&lt;0.1秒。（没有测试更大数据集，因为大数据集会导致建立链表时间过长从而无法实现。）该算法代码见程序实现部分的<code>void Adjmax(link L, int k)</code>函数。</p>
+<p>该函数的时间复杂度为O（n）。<br><img src="https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcwNTIwMDExMjExMTQ5?x-oss-process=image/format,png" alt="测试结果"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <!-- <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://darcyzhc.github.io" rel="external nofollow noreferrer">张超</a>
+                </span>
+            </div>   -->
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://darcyzhc.github.io/2017/05/20/lian-biao-de-ying-yong/">http://darcyzhc.github.io/2017/05/20/lian-biao-de-ying-yong/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源 !
+                </span>
+            </div> 
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                                    <span class="chip bg-color">链表</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '67280c137eebbb824bae',
+        clientSecret: 'e061c2756cdda64eada15ef324d2ea81394e2242',
+        repo: 'darcyzhc.github.io',
+        owner: 'darcyzhc',
+        admin: "darcyzhc",
+        id: '2017-05-20T19-53-07',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+    
+</script>
+
+<!-- 在获取不到评论人的头像时用默认头像替换（自己添加的代码） -->
+<script>
+function getMyHashCode(str,caseSensitive){
+    if(!caseSensitive){
+        str = str.toLowerCase();
+    }
+    var hash = 1315423911,i,ch;
+    for (i = str.length - 1; i >= 0; i--) {
+        ch = str.charCodeAt(i);
+        hash ^= ((hash << 5) + ch + (hash >> 2));
+    }
+    return (hash & 0x7FFFFFFF);
+}
+function imgErrorProcess(e){
+        var elem = e.target;
+        if(elem.tagName.toLowerCase() === 'img' && elem.getAttribute("class") === "darcyuniqueimglabel"){
+            if(elem.src.indexOf("/medias/erravatardarcy/")<0){
+                var name = elem.getAttribute("alt");
+                var imgNum = (getMyHashCode(name) % 50 + 50) % 50;
+                elem.src = '/medias/erravatardarcy/'+imgNum+'.jpg';
+            }
+    }
+}
+document.addEventListener("error", imgErrorProcess, true /*指定事件处理函数在捕获阶段执行*/);
+</script>
+
+<!-- 在获取不到评论数据时增加一个提示信息（自己添加的代码） -->
+<script>
+var mutationObserver = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+      if(mutation.target.getAttribute('class') == 'gt-error'){
+          $(function(){
+            $(".gt-error").after("<div class='darcy-get-error'>可以换个网络或者等一会再刷新试试~(=^▽^=)</div>");  
+          });
+      }
+    console.log(mutation);
+  });
+});
+mutationObserver.observe(document.getElementById('gitalk-container'), {
+  attributes: true,
+  characterData: false,
+  childList: false,
+  subtree: true,
+  attributeOldValue: false,
+  characterDataOldValue: false
+});
+</script>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/15/user-guide/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="User Guide">
+                        
+                        <span class="card-title">User Guide</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    测试
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%89%8B%E5%86%8C/">
+                        <span class="chip bg-color">手册</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%99%E7%A8%8B/">
+                        <span class="chip bg-color">教程</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/05/20/lian-biao-de-ying-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="链表的应用">
+                        
+                        <span class="card-title">链表的应用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            题目：求相邻k个节点数值之和最大的第一节点输入数据（设为整型）建立单链表，并求相邻k个节点data值之和为最大的第一节点。例如输入k = 2，数据为2 6 4 7 3 #（#为结束符），建立下面链表，运行结果输出（序号3，data值4）：
+
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-05-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AE%9E%E9%AA%8C/" class="post-category">
+                                    实验
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%93%BE%E8%A1%A8/">
+                        <span class="chip bg-color">链表</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="http://darcyzhc.github.io" target="_blank">ZhangChao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/darcyzhc" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:326892415@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=326892415" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 326892415" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
