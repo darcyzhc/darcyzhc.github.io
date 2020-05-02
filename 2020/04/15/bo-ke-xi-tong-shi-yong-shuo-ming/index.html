@@ -447,14 +447,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    939
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    6 分
                 </div>
                 
 
@@ -469,7 +469,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="写博客流程"><a href="#写博客流程" class="headerlink" title="写博客流程"></a>写博客流程</h2><ol>
+                <blockquote>
+<p>本文介绍了Hexo编写博客的流程，记录了在原主题上做的修改，博客系统迁移流程，博客SEO方法及其优化，还有Hexo内容生成原理，以及一些相关的资源链接。</p>
+</blockquote>
+<h2 id="写博客流程"><a href="#写博客流程" class="headerlink" title="写博客流程"></a>写博客流程</h2><ol>
 <li>在<code>./source/_posts</code>文件夹新建<code>.md</code>文档，或者在根目录执行以下命令（推荐）, 补全生成文档的头信息，然后编写博客内容</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -565,6 +568,62 @@ document<span class="token punctuation">.</span><span class="token function">add
 <li><a href="http://duansm.top/2018/08/08/hexo-sitemap/" target="_blank" rel="noopener">百度和谷歌收录博客</a></li>
 <li><a href="https://phantomt.github.io/2019/05/02/Hexo-001-sitemap/" target="_blank" rel="noopener">Hexo进行SEO优化，添加Sitemap</a></li>
 </ol>
+<h2 id="Hexo内容生成原理"><a href="#Hexo内容生成原理" class="headerlink" title="Hexo内容生成原理"></a>Hexo内容生成原理</h2><p>Hexo生成的静态html页面主要可以分为两种：</p>
+<h3 id="1-系统插件生成"><a href="#1-系统插件生成" class="headerlink" title="1. 系统插件生成"></a>1. 系统插件生成</h3><p>这一部分内容是由<code>/node_modules</code>文件夹中的各种生成器生成的，典型代表就是<code>archives</code>、<code>categories</code>和<code>tags</code>文件夹，这三个文件夹的内容分别是由<code>/node_modules</code>文件夹中的<code>hexo-generator-archive</code>、<code>hexo-generator-category</code>和<code>hexo-generator-tag</code>三个生成器生成的。更多生成器可以去<a href="https://hexo.io/plugins/" target="_blank" rel="noopener">Hexo插件网站</a>查找。</p>
+<h3 id="2-用户内容生成"><a href="#2-用户内容生成" class="headerlink" title="2. 用户内容生成"></a>2. 用户内容生成</h3><p>这一部分内容就是根据用户在<code>/source</code>文件夹以及<code>/source/_posts</code>文件夹中的<code>.md</code>以及<code>.html</code>文件生成的。其中<code>.md</code>文件需要根据其<a href="https://hexo.io/zh-cn/docs/front-matter" target="_blank" rel="noopener">Front-matter</a>中指定的layout进行生成（这里的layout是在主题文件夹的<code>/source</code>文件夹中的EJS文件），<code>.html</code>文件则直接复制过去。如<code>/source/about/index.md</code>生成后的文件就是<code>/public/about/index.html</code>。<code>/source/_posts</code>文件夹中的<code>.md</code>文件生成后就在对应的日期文件夹中。</p>
+<h3 id="3-layout中可以使用的一些变量说明"><a href="#3-layout中可以使用的一些变量说明" class="headerlink" title="3. layout中可以使用的一些变量说明"></a>3. layout中可以使用的一些变量说明</h3><blockquote>
+<p>更全的详细信息见官网的<a href="https://hexo.io/zh-cn/docs/variables" target="_blank" rel="noopener">变量说明</a></p>
+</blockquote>
+<ol>
+<li>单个<a href="https://ejs.co/" target="_blank" rel="noopener">EJS</a>文件中定义的局部变量可以直接使用JavaScript语法定义，如：</li>
+</ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span>
+    <span class="token keyword">var</span> menuMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    menuMap<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"Index"</span><span class="token punctuation">,</span> <span class="token string">"首页"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    menuMap<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"Tags"</span><span class="token punctuation">,</span> <span class="token string">"标签"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    menuMap<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"Categories"</span><span class="token punctuation">,</span> <span class="token string">"分类"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    menuMap<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"Archives"</span><span class="token punctuation">,</span> <span class="token string">"归档"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    menuMap<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"About"</span><span class="token punctuation">,</span> <span class="token string">"关于"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    menuMap<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"Contact"</span><span class="token punctuation">,</span> <span class="token string">"留言"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    menuMap<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">"Friends"</span><span class="token punctuation">,</span> <span class="token string">"友链"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> configRoot <span class="token operator">=</span> config<span class="token punctuation">.</span>root
+    configRoot <span class="token operator">=</span> <span class="token punctuation">(</span>configRoot <span class="token operator">===</span> <span class="token keyword">null</span> <span class="token operator">||</span> configRoot <span class="token operator">===</span> undefined <span class="token operator">||</span> configRoot <span class="token operator">===</span> <span class="token string">'/'</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token punctuation">:</span> configRoot<span class="token punctuation">;</span>
+<span class="token operator">%</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>主题配置文件变量，使用方法是<code>theme.name</code></li>
+<li>Hexo系统配置文件变量，使用方法是<code>config.name</code></li>
+<li>还有一种json数据文件，要将json文件放在<code>/source/_data</code>中，然后可以通过<code>site.data.fileName</code>来获取其中的数据。使用示例如下：</li>
+</ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>article id<span class="token operator">=</span><span class="token string">"friends-link"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>site<span class="token punctuation">.</span>data <span class="token operator">&amp;&amp;</span> site<span class="token punctuation">.</span>data<span class="token punctuation">.</span>myda<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">var</span> friends <span class="token operator">=</span> site<span class="token punctuation">.</span>data<span class="token punctuation">.</span>friends<span class="token punctuation">;</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"row tags-posts friend-all"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> len <span class="token operator">=</span> friends<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">var</span> friend <span class="token operator">=</span> friends<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token operator">%</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"col s12 m6 l4 friend-div"</span> data<span class="token operator">-</span>aos<span class="token operator">=</span><span class="token string">"zoom-in-up"</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"card frind-card&lt;%- ((i % 10) +1) %>"</span><span class="token operator">></span>
+                <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"frind-ship"</span><span class="token operator">></span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"title"</span><span class="token operator">></span>
+                        <span class="token operator">&lt;</span>img src<span class="token operator">=</span><span class="token string">"&lt;%- url_for(friend.avatar) %>"</span> alt<span class="token operator">=</span><span class="token string">"img"</span><span class="token operator">></span>
+                        <span class="token operator">&lt;</span>div<span class="token operator">></span>
+                            <span class="token operator">&lt;</span>h1 <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"friend-name"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> friend<span class="token punctuation">.</span>name <span class="token operator">%</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+                            <span class="token operator">&lt;</span>p style<span class="token operator">=</span><span class="token string">"position: relative;top: -35px;"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> friend<span class="token punctuation">.</span>introduction <span class="token operator">%</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+                        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+                    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"friend-button"</span><span class="token operator">></span>
+                        <span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"&lt;%- url_for(friend.url) %>"</span> target<span class="token operator">=</span><span class="token string">"_blank"</span>
+                            <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"button button-glow button-rounded button-caution"</span><span class="token operator">></span>
+                            <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">=</span> friend<span class="token punctuation">.</span>title <span class="token operator">%</span><span class="token operator">></span>
+                        <span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">></span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>article<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="相关资源参考"><a href="#相关资源参考" class="headerlink" title="相关资源参考"></a>相关资源参考</h2><p>好用的配色网站：<a href="https://www.materialpalette.com/colors" target="_blank" rel="noopener">主题配色</a><br>网站设计图标：<a href="https://fa5.dashgame.com/" target="_blank" rel="noopener">图标</a><br>搭建博客网站可以参考的教程：<a href="https://godweiyang.com/2018/04/13/hexo-blog/" target="_blank" rel="noopener">Guideline Blog</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
