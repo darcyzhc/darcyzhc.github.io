@@ -453,7 +453,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.7k
                 </div>
                 
 
@@ -574,10 +574,15 @@ document<span class="token punctuation">.</span><span class="token function">add
 <li><a href="http://duansm.top/2018/08/08/hexo-sitemap/" target="_blank" rel="noopener">百度和谷歌收录博客</a></li>
 <li><a href="https://phantomt.github.io/2019/05/02/Hexo-001-sitemap/" target="_blank" rel="noopener">Hexo进行SEO优化，添加Sitemap</a></li>
 </ol>
-<h2 id="Hexo内容生成原理"><a href="#Hexo内容生成原理" class="headerlink" title="Hexo内容生成原理"></a>Hexo内容生成原理</h2><p>Hexo生成的静态html页面主要可以分为两种：</p>
-<h3 id="1-系统插件生成"><a href="#1-系统插件生成" class="headerlink" title="1. 系统插件生成"></a>1. 系统插件生成</h3><p>这一部分内容是由<code>/node_modules</code>文件夹中的各种生成器生成的，典型代表就是<code>archives</code>、<code>categories</code>和<code>tags</code>文件夹，这三个文件夹的内容分别是由<code>/node_modules</code>文件夹中的<code>hexo-generator-archive</code>、<code>hexo-generator-category</code>和<code>hexo-generator-tag</code>三个生成器生成的。更多生成器可以去<a href="https://hexo.io/plugins/" target="_blank" rel="noopener">Hexo插件网站</a>查找。</p>
-<h3 id="2-用户内容生成"><a href="#2-用户内容生成" class="headerlink" title="2. 用户内容生成"></a>2. 用户内容生成</h3><p>这一部分内容就是根据用户在<code>/source</code>文件夹以及<code>/source/_posts</code>文件夹中的<code>.md</code>以及<code>.html</code>文件生成的。其中<code>.md</code>文件需要根据其<a href="https://hexo.io/zh-cn/docs/front-matter" target="_blank" rel="noopener">Front-matter</a>中指定的layout进行生成（这里的layout是在主题文件夹的<code>/source</code>文件夹中的EJS文件），<code>.html</code>文件则直接复制过去。如<code>/source/about/index.md</code>生成后的文件就是<code>/public/about/index.html</code>。<code>/source/_posts</code>文件夹中的<code>.md</code>文件生成后就在对应的日期文件夹中。</p>
-<h3 id="3-layout中可以使用的一些变量说明"><a href="#3-layout中可以使用的一些变量说明" class="headerlink" title="3. layout中可以使用的一些变量说明"></a>3. layout中可以使用的一些变量说明</h3><blockquote>
+<h2 id="Hexo工作原理"><a href="#Hexo工作原理" class="headerlink" title="Hexo工作原理"></a>Hexo工作原理</h2><h3 id="Hexo文件生成方式："><a href="#Hexo文件生成方式：" class="headerlink" title="Hexo文件生成方式："></a>Hexo文件生成方式：</h3><ol>
+<li>系统插件生成</li>
+</ol>
+<p>这一部分内容是由<code>/node_modules</code>文件夹中的各种生成器生成的，典型代表就是<code>archives</code>、<code>categories</code>和<code>tags</code>文件夹，这三个文件夹的内容分别是由<code>/node_modules</code>文件夹中的<code>hexo-generator-archive</code>、<code>hexo-generator-category</code>和<code>hexo-generator-tag</code>三个生成器生成的。更多生成器可以去<a href="https://hexo.io/plugins/" target="_blank" rel="noopener">Hexo插件网站</a>查找。</p>
+<ol start="2">
+<li>用户内容生成</li>
+</ol>
+<p>这一部分内容就是根据用户在<code>/source</code>文件夹以及<code>/source/_posts</code>文件夹中的<code>.md</code>以及<code>.html</code>文件生成的。其中<code>.md</code>文件需要根据其<a href="https://hexo.io/zh-cn/docs/front-matter" target="_blank" rel="noopener">Front-matter</a>中指定的layout进行生成（这里的layout是在主题文件夹的<code>/source</code>文件夹中的EJS文件），<code>.html</code>文件则直接复制过去。如<code>/source/about/index.md</code>生成后的文件就是<code>/public/about/index.html</code>。<code>/source/_posts</code>文件夹中的<code>.md</code>文件生成后就在对应的日期文件夹中。</p>
+<h3 id="layout中部分变量说明"><a href="#layout中部分变量说明" class="headerlink" title="layout中部分变量说明"></a>layout中部分变量说明</h3><blockquote>
 <p>更全的详细信息见官网的<a href="https://hexo.io/zh-cn/docs/variables" target="_blank" rel="noopener">变量说明</a></p>
 </blockquote>
 <ol>
@@ -630,6 +635,14 @@ document<span class="token punctuation">.</span><span class="token function">add
     <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">></span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>article<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
+<li>有一种<a href="https://hexo.io/zh-cn/docs/internationalization.html#%E6%A8%A1%E6%9D%BF" target="_blank" rel="noopener">双下划线函数变量</a>，使用格式如下所示。这种变量目前都是用来提取主题的language文件夹对应文件中的变量。下例中的<code>__('publishDate')</code>表示的是当前语言文件中<code>publishDate</code>变量的值。</li>
+</ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"post-date info-break-policy"</span><span class="token operator">></span>
+                    <span class="token operator">&lt;</span>i <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"far fa-calendar-minus fa-fw"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>i<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">__</span><span class="token punctuation">(</span><span class="token string">'publishDate'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span><span class="token punctuation">:</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
+                    <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">__</span><span class="token punctuation">(</span><span class="token string">'publishDate'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+                    <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">date</span><span class="token punctuation">(</span>page<span class="token punctuation">.</span>date<span class="token punctuation">,</span> <span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">></span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>下面是一些制作Hexo主题的教程，里面也包含了对Hexo工作原理的解析：</p>
 <p><a href="https://www.cnblogs.com/yyhh/p/11058985.html" target="_blank" rel="noopener">Hexo主题开发</a></p>
