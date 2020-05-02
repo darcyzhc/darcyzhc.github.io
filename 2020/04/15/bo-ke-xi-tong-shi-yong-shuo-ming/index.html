@@ -599,7 +599,7 @@ document<span class="token punctuation">.</span><span class="token function">add
 <ol start="2">
 <li>主题配置文件变量，使用方法是<code>theme.name</code></li>
 <li>Hexo系统配置文件变量，使用方法是<code>config.name</code></li>
-<li>还有一种json数据文件，要将json文件放在<code>/source/_data</code>中，然后可以通过<code>site.data.fileName</code>来获取其中的数据。使用示例如下：</li>
+<li>还有一个<a href="https://hexo.io/zh-cn/docs/data-files.html" target="_blank" rel="noopener">数据文件夹</a>功能，要将json或yaml文件放在<code>/source/_data</code>中，然后可以通过<code>site.data.fileName</code>来获取其中的数据。使用示例如下：</li>
 </ol>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>article id<span class="token operator">=</span><span class="token string">"friends-link"</span><span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>site<span class="token punctuation">.</span>data <span class="token operator">&amp;&amp;</span> site<span class="token punctuation">.</span>data<span class="token punctuation">.</span>myda<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">></span>
